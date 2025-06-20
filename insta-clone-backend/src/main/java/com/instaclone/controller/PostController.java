@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -49,6 +50,19 @@ public class PostController {
                 return new ResponseEntity<>("Uploading failed.", HttpStatus.BAD_REQUEST);
             }
         } catch (IOException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity<?> getAllPost() {
+        try {
+            List<Post> allPost = postServiceImpl.getAllPost();
+            if (!allPost.isEmpty()) {
+                return new ResponseEntity<>(allPost, HttpStatus.OK);
+            }
+            return new ResponseEntity<>(allPost, HttpStatus.NOT_FOUND);
+        } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
