@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -30,5 +32,16 @@ public class PostServiceImpl implements PostService{
         } catch (NullPointerException e) {
             throw new RuntimeException("Data insufficient." + e.getMessage(), e);
         }
+    }
+
+    @Override
+    public List<Post> getAllPost() {
+        List<Post> allPost = postRepository.findAll();
+        if(!allPost.isEmpty()) {
+            return allPost;
+        } else {
+            throw new RuntimeException("No post added.");
+        }
+
     }
 }
