@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Card from './components/Card';
+import Header from './components/Header'
+import { PlusIcon } from '@heroicons/react/24/solid';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+    return (
+        <div>
+            <Header/>
+            <div className='w-full flex justify-end p-5'>
+                <button className="relative p-2 rounded-full bg-gradient-to-r from-amber-500 to-pink-500 shadow-md">
+                    <span className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-500 to-pink-500 opacity-75 animate-ping"></span>
+                    <PlusIcon className="relative h-5 w-5 text-white" />
+                </button>
+            </div>
+            <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+            </div>
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+        </div>
+    )
 }
 
 export default App
