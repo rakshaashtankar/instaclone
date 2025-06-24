@@ -1,12 +1,16 @@
-import React from 'react'
-import imgReact from '../assets/react.svg'
-const Card = () => {
+import React, { useEffect } from 'react'
+const Card = ({data}) => {
+    useEffect(() => {
+        console.log(data);
+    })
+    
+    const { imgPath, imgCaption } = data;
     return (
-        <div class="max-w-sm bg-white rounded-lg shadow-md overflow-hidden">
-            <img src="https://via.placeholder.com/300x200" alt="Product Image" class="w-full object-cover h-48"/>
-            <div class="p-4">
-                <h5 class="text-lg font-semibold text-gray-900">Apple Watch Series 7</h5>
-                <p class="text-sm text-gray-600 mt-1">Aluminium Case, GPS, Sport Edition</p>
+        
+        <div className="max-w-sm bg-white rounded-sm shadow-md overflow-hidden p-4">
+            <img src={`http://localhost:8080${imgPath}`} alt={imgCaption} className="w-full object-contain h-48" loading='lazy' />
+            <div className="h-[80px] mt-2 p-3">
+                <p className="text-sm text-gray-600 mt-1">{imgCaption}</p>
             </div>
         </div>
 
